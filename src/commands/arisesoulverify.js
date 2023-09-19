@@ -11,6 +11,7 @@ module.exports = {
     const userId = interaction.user.id;
     const member = interaction.member;
     const internalRole = member.roles.cache.find(role => role.name === "internal");
+    const ariseSoulRole = member.roles.cache.find(role => role.name === "Arise Soul");
     const uniqueToken = generateUniqueToken(userId);
     const queryParams = {
       user_id: userId,
@@ -18,6 +19,10 @@ module.exports = {
 
     if (!internalRole) {
       await interaction.reply({ content: "You do not have permission to use this command.", ephemeral: true });
+      return;
+    }
+    if (ariseSoulRole) {
+      await interaction.reply({ content: "You already have Arise Soul role.", ephemeral: true });
       return;
     }
 
