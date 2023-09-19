@@ -13,8 +13,13 @@ module.exports = {
     const internalRole = member.roles.cache.find(role => role.name === "internal");
     const ariseSoulRole = member.roles.cache.find(role => role.name === "Arise Soul");
     const uniqueToken = generateUniqueToken(userId);
+    const expirationTime = new Date();
+    expirationTime.setHours(expirationTime.getHours() + 1);
+    const expirationTimestamp = Math.floor(expirationTime.getTime() / 1000);
+
     const queryParams = {
       user_id: userId,
+      expires: expirationTimestamp,
     };
 
     if (!internalRole) {
