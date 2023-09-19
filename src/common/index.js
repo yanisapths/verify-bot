@@ -8,7 +8,7 @@ function generateUniqueToken(userId) {
 }
 
 function buildVerificationLink(uniqueToken, queryParams) {
-  const baseUrl = "https://poc-verify.vercel.app/";
+  const baseUrl = "https://poc-verify.vercel.app/verify";
 
   const url = new URL(baseUrl);
   Object.entries(queryParams).forEach(([key, value]) => {
